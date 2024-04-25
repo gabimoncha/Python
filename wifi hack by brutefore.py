@@ -112,7 +112,7 @@ def beginwork(wifinamelist):
     files = open(path, 'r')
     while True:
         try:
-            password = files.readline()
+            password = files.readline(5_000_000)
             password = password.strip('\n')
             if not password:
                 break
