@@ -41,41 +41,41 @@ You need to pass an argument, the options the script expects is
 
 
 def windows():  # This is the function to run if it detects the OS is windows.
-    f = open(outputfile, "a")  # Open the logfile
-    for server in open(serverfile, "r"):  # Read the list of servers from the list
-        # ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
-        ret = subprocess.call(
-            "ping -n 3 %s" % server.strip(),
-            stdout=open("NUL", "w"),
-            stderr=subprocess.STDOUT,
-        )  # Ping the servers in turn
-        if ret == 0:  # Depending on the response
-            f.write(
-                "%s: is alive" % server.strip().ljust(15) + "\n"
-            )  # Write out to the logfile is the server is up
-        else:
-            f.write(
-                "%s: did not respond" % server.strip().ljust(15) + "\n"
-            )  # Write to the logfile if the server is down
+    with open(outputfile, "a") as f:
+        for server in open(serverfile, "r"):  # Read the list of servers from the list
+            # ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
+            ret = subprocess.call(
+                "ping -n 3 %s" % server.strip(),
+                stdout=open("NUL", "w"),
+                stderr=subprocess.STDOUT,
+            )  # Ping the servers in turn
+            if ret == 0:  # Depending on the response
+                f.write(
+                    "%s: is alive" % server.strip().ljust(15) + "\n"
+                )  # Write out to the logfile is the server is up
+            else:
+                f.write(
+                    "%s: did not respond" % server.strip().ljust(15) + "\n"
+                )  # Write to the logfile if the server is down
 
 
 def linux():  # This is the function to run if it detects the OS is nix.
-    f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
-    for server in open(serverfile, "r"):  # Read the list of servers from the list
-        ret = subprocess.call(
-            "ping -c 3 %s" % server,
-            shell=True,
-            stdout=open("/dev/null", "w"),
-            stderr=subprocess.STDOUT,
-        )  # Ping the servers in turn
-        if ret == 0:  # Depending on the response
-            f.write(
-                "%s: is alive" % server.strip().ljust(15) + "\n"
-            )  # Write out to the logfile is the server is up
-        else:
-            f.write(
-                "%s: did not respond" % server.strip().ljust(15) + "\n"
-            )  # Write to the logfile if the server is down
+    with open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a") as f:
+        for server in open(serverfile, "r"):  # Read the list of servers from the list
+            ret = subprocess.call(
+                "ping -c 3 %s" % server,
+                shell=True,
+                stdout=open("/dev/null", "w"),
+                stderr=subprocess.STDOUT,
+            )  # Ping the servers in turn
+            if ret == 0:  # Depending on the response
+                f.write(
+                    "%s: is alive" % server.strip().ljust(15) + "\n"
+                )  # Write out to the logfile is the server is up
+            else:
+                f.write(
+                    "%s: did not respond" % server.strip().ljust(15) + "\n"
+                )  # Write to the logfile if the server is down
 
 
 def get_servers(query):  # Function to get the servers from the database
