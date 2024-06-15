@@ -86,8 +86,7 @@ async def datapullpost(future, url):
             user_agent = {"User-agent": "Mozilla/17.0"}
             try:
                 data = requests.get(
-                    url=url, headers=user_agent, timeout=10, verify=False
-                ).text
+                    url=url, headers=user_agent, timeout=10, verify=True).text
             except Exception as e:
                 print(e)
                 data = None
@@ -209,8 +208,7 @@ class MoniteringClass:
                     user_agent = {"User-agent": "Mozilla/17.0"}
                     try:
                         data = requests.get(
-                            url=url, headers=user_agent, timeout=24, verify=False
-                        ).text
+                            url=url, headers=user_agent, timeout=24, verify=True).text
                     except Exception as err:
                         print(f"Exception : {err}")
                         data = None
