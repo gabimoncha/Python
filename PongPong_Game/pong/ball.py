@@ -1,8 +1,8 @@
 # ./PongPong/pong/ball.py
 
 import pyglet
-import random
 from typing import Tuple
+import secrets
 
 
 class BallObject(pyglet.shapes.Circle):
@@ -24,7 +24,7 @@ class BallObject(pyglet.shapes.Circle):
             3.17,
             3.25,
         ]  # more choices more randomness
-        rn = random.choice(speed)
+        rn = secrets.choice(speed)
         newx = self.x + self.velocity_x
         newy = self.y + self.velocity_y
 

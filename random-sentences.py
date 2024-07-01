@@ -4,8 +4,7 @@ the following order: 'article', 'nounce', 'verb', 'preposition',
 'article' and 'noun'.
 The second part produce a short story consisting of several of
 these sentences -- Random Note Writer!!"""
-
-import random
+import secrets
 
 article = ["the", "a", "one", "some", "any"]
 noun = ["boy", "girl", "dog", "town", "car"]
@@ -14,7 +13,7 @@ preposition = ["to", "from", "over", "under", "on"]
 
 
 def random_int():
-    return random.randint(0, 4)
+    return secrets.SystemRandom().randint(0, 4)
 
 
 def random_sentence():

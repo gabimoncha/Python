@@ -4,7 +4,6 @@
 import asyncio
 import multiprocessing
 import os
-import random
 import re
 import socket
 import sys
@@ -16,6 +15,7 @@ import requests
 import socks
 import ujson
 import urllib3
+import secrets
 
 try:
     import instagram_monitering.con_file as config
@@ -29,7 +29,7 @@ class PorxyApplyingDecorator(object):
         filename = os.getcwd() + "/" + "ipList.txt"
         with open(filename, "r") as f:
             ipdata = f.read()
-        self._IP = random.choice(ipdata.split(","))
+        self._IP = secrets.choice(ipdata.split(","))
 
     def __call__(self, function_to_call_for_appling_proxy):
         SOCKS5_PROXY_HOST = self._IP

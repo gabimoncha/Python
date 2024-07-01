@@ -1,8 +1,8 @@
 import turtle
-import random
+import secrets
 
 t = turtle.Turtle()
-num = random.randint(1, 1000)
+num = secrets.SystemRandom().randint(1, 1000)
 t.right(num)
 t.speed(num)
 t.left(num)
@@ -22,13 +22,13 @@ def tree(i):
         t.left(2)
         tree(i / 2)
         t.backward(num / 5)
-        tree(random.randint(1, 100))
-        tree(random.randint(1, num))
-        tree(random.randint(1, num / 2))
-        tree(random.randint(1, num / 3))
-        tree(random.randint(1, num / 2))
-        tree(random.randint(1, num))
-        tree(random.randint(1, 100))
+        tree(secrets.SystemRandom().randint(1, 100))
+        tree(secrets.SystemRandom().randint(1, num))
+        tree(secrets.SystemRandom().randint(1, num / 2))
+        tree(secrets.SystemRandom().randint(1, num / 3))
+        tree(secrets.SystemRandom().randint(1, num / 2))
+        tree(secrets.SystemRandom().randint(1, num))
+        tree(secrets.SystemRandom().randint(1, 100))
         t.forward(num / 5)
         t.right(2)
         tree(3 * i / 4)
@@ -47,8 +47,8 @@ def cycle(i):
         return
     else:
         try:
-            tree(random.randint(1, i))
-            tree(random.randint(1, i * 2))
+            tree(secrets.SystemRandom().randint(1, i))
+            tree(secrets.SystemRandom().randint(1, i * 2))
         except:
             print("An exception occured")
         else:
@@ -60,13 +60,13 @@ def fractal(i):
     if i < 10:
         return
     else:
-        cycle(random.randint(1, i + 1))
-        cycle(random.randint(1, i))
-        cycle(random.randint(1, i - 1))
-        cycle(random.randint(1, i - 2))
+        cycle(secrets.SystemRandom().randint(1, i + 1))
+        cycle(secrets.SystemRandom().randint(1, i))
+        cycle(secrets.SystemRandom().randint(1, i - 1))
+        cycle(secrets.SystemRandom().randint(1, i - 2))
         print("fractal execution complete")
 
 
-fractal(random.randint(1, 200))
+fractal(secrets.SystemRandom().randint(1, 200))
 print("Execution complete")
 turtle.done()

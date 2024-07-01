@@ -1,8 +1,6 @@
 # importing the time module
 import time
-
-# importing the random module
-import random
+import secrets
 
 # welcoming the user
 name = input("What is your name? ")
@@ -21,7 +19,7 @@ cherry papaya berry peach lychee muskmelon"""
 
 someWords = someWords.split(" ")
 # randomly choose a secret word from our "someWords" LIST.
-word = random.choice(someWords)
+word = secrets.choice(someWords)
 
 # creates an variable with an empty value
 guesses = ""

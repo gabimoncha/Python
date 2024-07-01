@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # a python program for tic-tac-toe game
 # module intro for introduction
@@ -43,7 +43,7 @@ def input_player_letter():
 
 
 def frist_player():
-    guess = random.randint(0, 1)
+    guess = secrets.SystemRandom().randint(0, 1)
     if guess == 0:
         return "Computer"
     else:
@@ -103,7 +103,7 @@ def choose_random_move_from_list(board, moveslist):
             possible_moves.append(i)
 
     if len(possible_moves) != 0:
-        return random.choice(possible_moves)
+        return secrets.choice(possible_moves)
     else:
         return None
 

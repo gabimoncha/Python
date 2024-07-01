@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # Define the game board with snakes and ladders
 snakes_and_ladders = {
@@ -10,7 +10,7 @@ snakes_and_ladders = {
 
 # Function to roll a six-sided die
 def roll_die():
-    return random.randint(1, 6)
+    return secrets.SystemRandom().randint(1, 6)
 
 # Function to simulate a single turn
 def take_turn(current_position, player_name):

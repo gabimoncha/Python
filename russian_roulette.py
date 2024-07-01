@@ -2,8 +2,8 @@
     the code is just a russian roulette game against
     the computer
 """
-from random import randrange
 import time
+import secrets
 
 
 def main():
@@ -11,7 +11,7 @@ def main():
     # create the gun and set the bullet
     numOfRounds = 6
     gun = [0, 0, 0, 0, 0, 0]
-    bullet = randrange(0, 6)
+    bullet = secrets.SystemRandom().randrange(0, 6)
     gun[bullet] = 1
     player = False  # is player dead
     pc = False  # is pc dead

@@ -6,9 +6,8 @@ if computer chooses snake and user chooses water, the snake will drink water and
 If computer chooses gun and user chooses water, the gun gets drown into water and user wins.
 And so on for other cases
 """
-
-import random
 import time
+import secrets
 
 choices = {"S": "Snake", "W": "Water", "G": "Gun"}
 
@@ -26,7 +25,7 @@ while x < 10:
     for key, value in choices.items():
         print(f"Choose {key} for {value}")
 
-    com_choice = random.choice(list(choices.keys())).lower()
+    com_choice = secrets.choice(list(choices.keys())).lower()
     user_choice = input("\n----->").lower()
 
     if user_choice == "s" and com_choice == "w":

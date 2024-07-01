@@ -4,11 +4,12 @@
 # Modified by : Rayan Dutta
 # Minor changes made to keep the game working.
 
+import secrets
+
 try:
     import curses
     from time import sleep
     from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
-    from random import randint
 
     print(
         "Use the arrow keys to move, press the space bar to pause, and press ESC to quit"
@@ -96,8 +97,8 @@ try:
             score += 1
             while food == []:
                 food = [
-                    randint(1, 18),
-                    randint(1, 58),
+                    secrets.SystemRandom().randint(1, 18),
+                    secrets.SystemRandom().randint(1, 58),
                 ]  # Calculating next food's coordinates
                 if food in snake:
                     food = []

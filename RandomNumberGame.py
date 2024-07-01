@@ -7,7 +7,7 @@
 """
 
 import os
-import random
+import secrets
 
 players = []
 score = []
@@ -30,7 +30,7 @@ for i in range(0, n):
 os.system("cls")
 
 for i in range(0, n):
-    orignum = random.randint(1, 100)
+    orignum = secrets.SystemRandom().randint(1, 100)
     print(players[i], "your turn :", end="\n\n")
     count = 0
     while True:

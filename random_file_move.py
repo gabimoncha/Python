@@ -6,8 +6,9 @@
 # Description   : This will move specified number of files(given in ratio) from the src directory to dest directory.
 
 
-import os, random
+import os
 import argparse
+import secrets
 
 
 def check_ratio(x):
@@ -58,7 +59,7 @@ size = int(ratio * len(files))
 
 print("Move {} files from {} to {} ? [y/n]".format(size, src, dest))
 if input().lower() == "y":
-    for f in random.sample(files, size):
+    for f in secrets.SystemRandom().sample(files, size):
         try:
             os.rename(os.path.join(src, f), os.path.join(dest, f))
         except Exception as e:
