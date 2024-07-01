@@ -1,8 +1,8 @@
 # using codeSkulpter
 
-import random
 
 import simplegui
+import secrets
 
 
 def new_game():
@@ -12,13 +12,13 @@ def new_game():
 
 def range_of_100():
     global num
-    num = random.randrange(0, 100)
+    num = secrets.SystemRandom().randrange(0, 100)
     print("your range is 0-100")
 
 
 def range_of_1000():
     global num
-    num = random.randrange(0, 1000)
+    num = secrets.SystemRandom().randrange(0, 1000)
     print("Your range is 0-1000")
 
 

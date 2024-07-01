@@ -1,8 +1,8 @@
 # Author-Slayking1965
 # email-kingslayer8509@gmail.com
-import random
 import pyautogui
 import string
+import secrets
 
 
 chars = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -16,7 +16,7 @@ password = pyautogui.password("Enter a password : ")
 guess_password = ""
 
 while guess_password != password:
-    guess_password = random.choices(chars_list, k=len(password))
+    guess_password = secrets.SystemRandom().choices(chars_list, k=len(password))
 
     print("<==================" + str(guess_password) + "==================>")
 

@@ -1,4 +1,5 @@
 import pygame
+import secrets
 
 """
 Visualises how a floodfill algorithm runs and work using pygame
@@ -25,24 +26,22 @@ class FloodFill:
     def generateClosedPolygons(self):
         if self.window_height < 128 or self.window_width < 128:
             return  # surface too small
-
-        from random import randint, uniform
         from math import pi, sin, cos
 
-        for n in range(0, randint(0, 5)):
-            x = randint(50, self.window_width - 50)
-            y = randint(50, self.window_height - 50)
+        for n in range(0, secrets.SystemRandom().randint(0, 5)):
+            x = secrets.SystemRandom().randint(50, self.window_width - 50)
+            y = secrets.SystemRandom().randint(50, self.window_height - 50)
 
             angle = 0
-            angle += uniform(0, 0.7)
+            angle += secrets.SystemRandom().uniform(0, 0.7)
             vertices = []
 
-            for i in range(0, randint(3, 7)):
-                dist = randint(10, 50)
+            for i in range(0, secrets.SystemRandom().randint(3, 7)):
+                dist = secrets.SystemRandom().randint(10, 50)
                 vertices.append(
                     (int(x + cos(angle) * dist), int(y + sin(angle) * dist))
                 )
-                angle += uniform(0, pi / 2)
+                angle += secrets.SystemRandom().uniform(0, pi / 2)
 
             for i in range(0, len(vertices) - 1):
                 pygame.draw.line(

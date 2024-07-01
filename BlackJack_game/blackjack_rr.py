@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 class Colour:
@@ -70,7 +70,7 @@ class Deck:
             deck_comp += "\n " + card.__str__()
 
     def shuffle(self):
-        random.shuffle(self.deck)
+        secrets.SystemRandom().shuffle(self.deck)
 
     def deal(self):
         single_card = self.deck.pop()

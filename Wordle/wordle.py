@@ -21,9 +21,7 @@ for i in dictionary_content:
 # Close out of the new dictionary
 new_dictionary.close()
 """
-
-# import the library random
-import random
+import secrets
 
 # Load 5 letter word dictionary
 with open("5 letter word dictionary.txt", 'r') as dictionary:
@@ -31,7 +29,7 @@ with open("5 letter word dictionary.txt", 'r') as dictionary:
     dictionary = dictionary.read().split('\n') # This returns a list of all the words in the dictionary
 
 # Choose a random word from the dictionary
-word = random.choice(dictionary)
+word = secrets.choice(dictionary)
 
 # Get all the unique letters of the word
 dif_letters = list(set(word))

@@ -1,7 +1,5 @@
 import utils
-
-# import the random module
-import random
+import secrets
 
 print("Starting the Rock Paper Scissors game!")
 player_name = input("Please enter your name: ")  # Takes Input from the user
@@ -20,7 +18,7 @@ while True:
 
 if utils.validate(player_hand):
     # Assign a random number between 0 and 2 to computer_hand using randint
-    computer_hand = random.randint(0, 2)
+    computer_hand = secrets.SystemRandom().randint(0, 2)
 
     utils.print_hand(player_hand, player_name)
     utils.print_hand(computer_hand, "Computer")

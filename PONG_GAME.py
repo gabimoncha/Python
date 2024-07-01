@@ -1,8 +1,8 @@
 # Pong Game in Codeskulptor
 
-import random
 
 import simplegui
+import secrets
 
 WIDTH = 600
 HEIGHT = 400
@@ -25,9 +25,9 @@ def spawn_ball(direction):
     global ball_pos, ball_vel  # these are vectors stored as lists
     ball_pos = [WIDTH / 2, HEIGHT / 2]
     if direction == RIGHT:
-        ball_vel = [random.randrange(120, 240) / 60, random.randrange(60, 180) / 60]
+        ball_vel = [secrets.SystemRandom().randrange(120, 240) / 60, secrets.SystemRandom().randrange(60, 180) / 60]
     elif direction == LEFT:
-        ball_vel = [-random.randrange(120, 240) / 60, random.randrange(60, 180) / 60]
+        ball_vel = [-secrets.SystemRandom().randrange(120, 240) / 60, secrets.SystemRandom().randrange(60, 180) / 60]
 
 
 def reset():

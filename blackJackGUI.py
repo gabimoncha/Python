@@ -1,6 +1,6 @@
 from __future__ import print_function
-import random
 import simplegui
+import secrets
 
 CARD_SIZE = (72, 96)
 CARD_CENTER = (36, 48)
@@ -108,10 +108,10 @@ class Deck:
         self.Deck = [Card(suit, rank) for suit in SUITS for rank in RANKS]
 
     def shuffle(self):
-        random.shuffle(self.Deck)
+        secrets.SystemRandom().shuffle(self.Deck)
 
     def deal_card(self):
-        return random.choice(self.Deck)
+        return secrets.choice(self.Deck)
 
     def __str__(self):
         return string_list_join("Deck", self.Deck)

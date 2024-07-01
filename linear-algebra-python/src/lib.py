@@ -21,7 +21,7 @@ Overview:
 """
 
 import math
-import random
+import secrets
 
 
 class Vector(object):
@@ -246,9 +246,9 @@ def randomVector(N, a, b):
             random integer components between 'a' and 'b'.
     """
     ans = zeroVector(N)
-    random.seed(None)
+    secrets.SystemRandom().seed(None)
     for i in range(N):
-        ans.changeComponent(i, random.randint(a, b))
+        ans.changeComponent(i, secrets.SystemRandom().randint(a, b))
     return ans
 
 
@@ -418,10 +418,10 @@ def randomMatrix(W, H, a, b):
     between 'a' and 'b'
     """
     matrix = []
-    random.seed(None)
+    secrets.SystemRandom().seed(None)
     for i in range(H):
         row = []
         for j in range(W):
-            row.append(random.randint(a, b))
+            row.append(secrets.SystemRandom().randint(a, b))
         matrix.append(row)
     return Matrix(matrix, W, H)

@@ -9,7 +9,7 @@
 # Description	: This will randomly select two numbers,
 # like throwing dice, you can change the sides of the dice if you wish
 
-import random
+import secrets
 
 
 class Die(object):
@@ -35,7 +35,7 @@ class Die(object):
             print("wrong sides! sides set to 6")
 
     def roll(self):
-        return random.randint(1, self.sides)
+        return secrets.SystemRandom().randint(1, self.sides)
 
 
 d = Die()

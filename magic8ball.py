@@ -1,6 +1,6 @@
-import random
 from colorama import Fore, Style
 import inquirer
+import secrets
 
 responses = [
     "It is certain",
@@ -40,7 +40,7 @@ def display_greeting(name):
 
 def magic_8_ball():
     question = inquirer.text(message="What's your question?").execute()
-    answer = random.choice(responses)
+    answer = secrets.choice(responses)
     print(Fore.BLUE + Style.BRIGHT + answer + Style.RESET_ALL)
     try_again()
 

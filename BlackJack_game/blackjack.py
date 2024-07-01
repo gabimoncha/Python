@@ -2,17 +2,11 @@
 # master
 # BLACK JACK - CASINO A GAME OF FORTUNE!!!
 from time import *
-
-# BLACK JACK - CASINO
-# PYTHON CODE BASE
-
-
-# master
-import random
+import secrets
 
 deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
 
-random.shuffle(deck)
+secrets.SystemRandom().shuffle(deck)
 
 print(f'{"*"*58} \n Welcome to the game Casino - BLACK JACK ! \n{"*"*58}')
 sleep(2)
@@ -35,14 +29,14 @@ d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
 sleep(2)
 while len(d_cards) != 2:
-    random.shuffle(deck)
+    secrets.SystemRandom().shuffle(deck)
     d_cards.append(deck.pop())
     if len(d_cards) == 2:
         print("The cards dealer has are X ", d_cards[1])
 
 # Displaying the Player's cards
 while len(p_cards) != 2:
-    random.shuffle(deck)
+    secrets.SystemRandom().shuffle(deck)
     p_cards.append(deck.pop())
     if len(p_cards) == 2:
         print("The total of player is ", sum(p_cards))
@@ -69,7 +63,7 @@ if sum(d_cards) == 21 and sum(p_cards) == 21:
 def dealer_choice():
     if sum(d_cards) < 17:
         while sum(d_cards) < 17:
-            random.shuffle(deck)
+            secrets.SystemRandom().shuffle(deck)
             d_cards.append(deck.pop())
 
     print("Dealer has total " + str(sum(d_cards)) + "with the cards ", d_cards)
@@ -108,7 +102,7 @@ while sum(p_cards) < 21:
     # to continue the game again and again !!
     k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay ")
     if k == "1": #Ammended 1 to a string
-        random.shuffle(deck)
+        secrets.SystemRandom().shuffle(deck)
         p_cards.append(deck.pop())
         print("You have a total of " + str(sum(p_cards)) + " with the cards ", p_cards)
         if sum(p_cards) > 21:

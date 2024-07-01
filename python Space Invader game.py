@@ -1,7 +1,7 @@
 import pygame
-import random
 import math
 from pygame import mixer
+import secrets
 
 # initialization
 
@@ -39,8 +39,8 @@ number_of_enemies = 6
 
 for i in range(number_of_enemies):
     enemyimg.append(pygame.image.load('enemy.png'))
-    enemyx.append(random.randint(0, 800))
-    enemyy.append(random.randint(50, 150))
+    enemyx.append(secrets.SystemRandom().randint(0, 800))
+    enemyy.append(secrets.SystemRandom().randint(50, 150))
     enemyx_change.append(2.5)
     enemyy_change.append(40)
 
@@ -157,8 +157,8 @@ while running:
             bullety = 480
             bullet_state = "ready"
             score_value += 1
-            enemyx[i] = random.randint(0, 800)
-            enemyy[i] = random.randint(50, 150)
+            enemyx[i] = secrets.SystemRandom().randint(0, 800)
+            enemyy[i] = secrets.SystemRandom().randint(50, 150)
 
         enemy(enemyx[i], enemyy[i], i)
 
