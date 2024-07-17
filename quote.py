@@ -10,7 +10,7 @@ from json import loads
 
 
 def return_quote():
-    response = requests.get("https://zenquotes.io/api/random")
+    response = requests.get("https://zenquotes.io/api/random", timeout=60)
     json_data = loads(response.text)
     quote = (
         json_data[0]["q"] + " -" + json_data[0]["a"]

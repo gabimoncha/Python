@@ -26,7 +26,7 @@ class Phonearena:
 
         # Handing the connection error of the url.
         try:
-            page = requests.get(url)
+            page = requests.get(url, timeout=60)
             # It parses the html data from requested url.
             soup = BeautifulSoup(page.text, "html.parser")
             return soup

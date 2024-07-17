@@ -3,13 +3,13 @@ import requests
 import os
 
 date = input("Enter date(YYYY-MM-DD): ")
-r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={key}&date={date}")
+r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={key}&date={date}", timeout=60)
 parsed = r.json()
 title = parsed["title"]
 url = parsed["hdurl"]
 print(f"{title}: {url}")
 
-img_ = requests.get(url, stream=True)
+img_ = requests.get(url, stream=True, timeout=60)
 print(img_.headers)
 print(img_.headers["content-type"], img_.headers["content-length"])
 content_type = img_.headers["content-type"]

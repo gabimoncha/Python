@@ -29,10 +29,10 @@ for i in range(1, 159):
     url = "https://www.boomlive.in/fake-news/" + str(i)
     try:
         # this might throw an exception if something goes wrong.
-        page = requests.get(url)
+        page = requests.get(url, timeout=60)
 
         # send requests
-        page = requests.get(url)
+        page = requests.get(url, timeout=60)
         soup = BeautifulSoup(page.text, "html.parser")
 
         # Collecting all the links in a list
@@ -159,7 +159,7 @@ for i in range(2, 126):
 
     try:
         # send requests
-        page = requests.get(url)
+        page = requests.get(url, timeout=60)
         soup = BeautifulSoup(page.text, "html.parser")
 
         # Collecting all the links in a list

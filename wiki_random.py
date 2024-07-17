@@ -26,7 +26,7 @@ url = (
 
 
 def load():
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     if response.ok:
         jsonData = response.json()["query"]["random"]
         print("10 Random generted WIKI pages...")

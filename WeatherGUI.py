@@ -10,7 +10,7 @@ root.config(bg="white")
 
 
 def getWeather():
-    page = requests.get(url)
+    page = requests.get(url, timeout=60)
     soup = BeautifulSoup(page.content, "html.parser")
     location = soup.find("h1", class_="_1Ayv3").text
     temperature = soup.find("span", class_="_3KcTQ").text

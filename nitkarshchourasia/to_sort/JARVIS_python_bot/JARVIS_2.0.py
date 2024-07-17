@@ -61,7 +61,7 @@ def speak(audio):
 
 def speak_news():
     url = "http://newsapi.org/v2/top-headlines?sources=the-times-of-india&apiKey=yourapikey"
-    news = requests.get(url).text
+    news = requests.get(url, timeout=60).text
     news_dict = json.loads(news)
     arts = news_dict["articles"]
     speak("Source: The Times Of India")

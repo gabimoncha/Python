@@ -15,7 +15,7 @@ archive_url = "http://www-personal.umich.edu/~csev/books/py4inf/media/"
 
 def get_video_links():
     # create response object
-    r = requests.get(archive_url)
+    r = requests.get(archive_url, timeout=60)
 
     # create beautiful-soup object
     soup = BeautifulSoup(r.content, "html5lib")
@@ -44,7 +44,7 @@ def download_video_series(video_links):
         print("Downloading the file:%s" % file_name)
 
         # create response object
-        r = requests.get(link, stream=True)
+        r = requests.get(link, stream=True, timeout=60)
 
         # download started
         with open(file_name, "wb") as f:
