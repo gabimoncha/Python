@@ -3,6 +3,8 @@ import bs4, requests
 import numpy as np
 import pandas as pd
 import os
+from security import safe_requests
+
 requests.packages.urllib3.disable_warnings()
 FinalResult=[]
 def SearchResults():
@@ -22,7 +24,7 @@ def SearchResults():
         searchString=i.replace("+","%2B")
         searchString=searchString.replace(" ","+")
         searchString=StabUrl+searchString+midUrl+searchString+EndUrl
-        r = requests.get(searchString, headers=header)
+        r = safe_requests.get(searchString, headers=header)
         soup = bs4.BeautifulSoup(r.text, features="html.parser")
         elements = soup.select(".r a")
         for g in elements:
@@ -32,7 +34,7 @@ def SearchResults():
             if (k[0] != "#") and k[0] != "/":
                 checker = k[8:16]
                 if (checker != "webcache"):
-                    rr = requests.get(k, headers=header, verify=False)
+                    rr = safe_requests.get(k, headers=header, verify=False)
                     soupInside = bs4.BeautifulSoup(rr.text, features="html.parser")
                     elementInside=soupInside.select("body")
                     for line in elementInside:

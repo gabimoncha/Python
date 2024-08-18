@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from security import safe_requests
 
 language_symbols = {}
 
@@ -27,7 +28,7 @@ def data(selected_topic, selected_language):
 
     try:
         url = f"https://{symbol}.wikipedia.org/wiki/{selected_topic}"
-        data_response = requests.get(url)
+        data_response = safe_requests.get(url)
         data_response.raise_for_status()
         data_soup = BeautifulSoup(data_response.content, 'html.parser')
 
@@ -52,7 +53,7 @@ def data(selected_topic, selected_language):
 def get_image_urls(query):
     try:
         search_url = f"https://www.google.com/search?q={query}&tbm=isch"
-        image_response = requests.get(search_url)
+        image_response = safe_requests.get(search_url)
         image_response.raise_for_status()
         image_soup = BeautifulSoup(image_response.content, 'html.parser')
 

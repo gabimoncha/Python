@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests
+from security import safe_requests
 
 """
    this check_sign function checks and returns the zodiac sign
@@ -68,7 +68,7 @@ def horoscope(zodiac_sign: int, day: str) -> str:
         "https://www.horoscope.com/us/horoscopes/general/"
         f"horoscope-general-daily-{day}.aspx?sign={zodiac_sign}"
     )
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    soup = BeautifulSoup(safe_requests.get(url).content, "html.parser")
     return soup.find("div", class_="main-horoscope").p.text
 
 

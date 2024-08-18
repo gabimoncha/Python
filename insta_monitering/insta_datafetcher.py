@@ -12,10 +12,10 @@ import time
 
 import bs4
 import pymongo
-import requests
 import socks
 import ujson
 import urllib3
+from security import safe_requests
 
 try:
     import instagram_monitering.con_file as config
@@ -85,7 +85,7 @@ async def datapullpost(future, url):
             urllib3.disable_warnings()
             user_agent = {"User-agent": "Mozilla/17.0"}
             try:
-                data = requests.get(
+                data = safe_requests.get(
                     url=url, headers=user_agent, timeout=10, verify=False
                 ).text
             except Exception as e:
@@ -208,7 +208,7 @@ class MoniteringClass:
                     urllib3.disable_warnings()
                     user_agent = {"User-agent": "Mozilla/17.0"}
                     try:
-                        data = requests.get(
+                        data = safe_requests.get(
                             url=url, headers=user_agent, timeout=24, verify=False
                         ).text
                     except Exception as err:

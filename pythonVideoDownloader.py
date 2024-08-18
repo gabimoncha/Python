@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 """
 URL of the archive web-page which provides link to
@@ -44,7 +45,7 @@ def download_video_series(video_links):
         print("Downloading the file:%s" % file_name)
 
         # create response object
-        r = requests.get(link, stream=True)
+        r = safe_requests.get(link, stream=True)
 
         # download started
         with open(file_name, "wb") as f:

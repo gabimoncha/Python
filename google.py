@@ -12,7 +12,7 @@ import webbrowser
 
 import bs4
 import pyperclip
-import requests
+from security import safe_requests
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
         # copied in the clipboard
         keyword = pyperclip.paste()
 
-    res = requests.get("http://google.com/search?q=" + keyword)
+    res = safe_requests.get("http://google.com/search?q=" + keyword)
     res.raise_for_status()
     soup = bs4.BeautifulSoup(res.text)
     linkElems = soup.select(".r a")
