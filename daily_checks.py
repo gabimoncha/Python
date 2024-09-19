@@ -17,6 +17,7 @@ import platform  # Load Modules
 import subprocess
 import sys
 from time import strftime  # Load just the strftime Module from Time
+from security import safe_command
 
 
 def clear_screen():  # Function to clear the screen
@@ -43,7 +44,7 @@ def putty_sessions(conffilename):  # Function to load the putty sessions I need
     # Open the file server_list.txt, loop through reading each line
     #  1.1 -Changed - 1.3 Changed name to use variable conffilename
     for server in open(conffilename):
-        subprocess.Popen(("putty -load " + server))  # Open the PuTTY sessions - 1.1
+        safe_command.run(subprocess.Popen, ("putty -load " + server))  # Open the PuTTY sessions - 1.1
 
 
 def rdp_sessions():

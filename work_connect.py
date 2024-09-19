@@ -12,6 +12,7 @@ import os  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
 import time  # Load the Library Module
+from security import safe_command
 
 dropbox = os.getenv(
     "dropbox"
@@ -42,8 +43,7 @@ else:
         passwd = sys.argv[
             2
         ]  # Set the variable passwd as the second argument passed, in this case my login password
-        subprocess.Popen(
-            (
+        safe_command.run(subprocess.Popen, (
                 r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
                 + passwd
             )
