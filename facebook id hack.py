@@ -63,7 +63,7 @@ print("\nTrying Passwords from list ...")
 
 i = 0
 while file:
-    passw = file.readline().strip()
+    passw = file.readline(5_000_000).strip()
     i += 1
     if len(passw) < 6:
         continue
