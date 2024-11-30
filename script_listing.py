@@ -23,15 +23,15 @@ path = os.getenv(
 logfilename = os.path.join(
     logdir, logfile
 )  # Set the variable logfilename by joining logdir and logfile together
-log = open(logfilename, "w")  # Set the variable log and open the logfile for writing
-
-for dirpath, dirname, filenames in os.walk(
-    path
-):  # Go through the directories and the subdirectories
-    for filename in filenames:  # Get all the filenames
-        log.write(
-            os.path.join(dirpath, filename) + "\n"
-        )  # Write the full path out to the logfile
+with open(logfilename, "w") as log:
+    
+    for dirpath, dirname, filenames in os.walk(
+        path
+    ):  # Go through the directories and the subdirectories
+        for filename in filenames:  # Get all the filenames
+            log.write(
+                os.path.join(dirpath, filename) + "\n"
+            )  # Write the full path out to the logfile
 
 print(
     "\nYour logfile ", logfilename, "has been created"

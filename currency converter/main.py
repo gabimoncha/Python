@@ -27,16 +27,16 @@ def getVal(cont1, cont2):
 app = QtWidgets.QApplication([])
 
 window = uic.loadUi("gui.ui")
-f = open("country.txt", "r")
-
-window = uic.loadUi("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/gui.ui")
-f = open("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/country.txt", "r")
-
-window.dropDown1.addItem("Select")
-window.dropDown2.addItem("Select")
-for i in f.readlines():
-    window.dropDown1.addItem(i)
-    window.dropDown2.addItem(i)
+with open("country.txt", "r") as f:
+    
+    window = uic.loadUi("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/gui.ui")
+    with open("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/country.txt", "r") as f:
+        
+        window.dropDown1.addItem("Select")
+        window.dropDown2.addItem("Select")
+        for i in f.readlines():
+            window.dropDown1.addItem(i)
+            window.dropDown2.addItem(i)
 intOnly = QDoubleValidator()
 window.lineEdit.setValidator(intOnly)
 

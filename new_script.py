@@ -54,13 +54,13 @@ old_text = " Script Name	: "
 new_text = " Script Name	: " + output_file
 if not (os.path.exists(outputdir)):
     os.mkdir(outputdir)
-newscript = open(script, "w")
-input = open(input_file, "r")
-today = datetime.date.today()
-old_date = " Created	:"
-new_date = " Created	: " + today.strftime("%d %B %Y")
-
-for line in input:
-    line = line.replace(old_text, new_text)
-    line = line.replace(old_date, new_date)
-    newscript.write(line)
+with open(script, "w") as newscript:
+    with open(input_file, "r") as input:
+        today = datetime.date.today()
+        old_date = " Created	:"
+        new_date = " Created	: " + today.strftime("%d %B %Y")
+        
+        for line in input:
+            line = line.replace(old_text, new_text)
+            line = line.replace(old_date, new_date)
+            newscript.write(line)

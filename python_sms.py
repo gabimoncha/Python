@@ -19,64 +19,63 @@ dropbox = os.getenv("dropbox")
 scripts = os.getenv("scripts")
 dbfile = "database/maindatabase.db"
 master_db = os.path.join(dropbox, dbfile)
+with open(scripts + "/output/student.txt", "a") as f:
+    
+    tdate = strftime("%d-%m")
+    
+    conn = sqlite3.connect(master_db)
+    cursor = conn.cursor()
+    loc_stmt = "SELECT name, number from table"
+    cursor.execute(loc_stmt)
+    while True:
+        row = cursor.fetchone()
+        if row == None:
+            break
+        sname = row[0]
+        snumber = row[1]
 
-f = open(scripts + "/output/student.txt", "a")
+        message = (
+            f"{sname} There will be NO training tonight on the {tdate}. Sorry for the late notice, I have sent a mail as well, just trying to reach everyone, please do not reply to this message as this is automated"
+        )
 
-tdate = strftime("%d-%m")
+        username = "YOUR_USERNAME"
+        sender = "WHO_IS_SENDING_THE_MAIL"
 
-conn = sqlite3.connect(master_db)
-cursor = conn.cursor()
-loc_stmt = "SELECT name, number from table"
-cursor.execute(loc_stmt)
-while True:
-    row = cursor.fetchone()
-    if row == None:
-        break
-    sname = row[0]
-    snumber = row[1]
+        hash = "YOUR HASH YOU GET FROM YOUR ACCOUNT"
 
-    message = (
-        f"{sname} There will be NO training tonight on the {tdate}. Sorry for the late notice, I have sent a mail as well, just trying to reach everyone, please do not reply to this message as this is automated"
-    )
+        numbers = snumber
 
-    username = "YOUR_USERNAME"
-    sender = "WHO_IS_SENDING_THE_MAIL"
+        # Set flag to 1 to simulate sending, this saves your credits while you are testing your code. # To send real message set this flag to 0
+        test_flag = 0
 
-    hash = "YOUR HASH YOU GET FROM YOUR ACCOUNT"
+        # -----------------------------------
+        # No need to edit anything below this line
+        # -----------------------------------
 
-    numbers = snumber
+        values = {
+            "test": test_flag,
+            "uname": username,
+            "hash": hash,
+            "message": message,
+            "from": sender,
+            "selectednums": numbers,
+        }
 
-    # Set flag to 1 to simulate sending, this saves your credits while you are testing your code. # To send real message set this flag to 0
-    test_flag = 0
+        url = "http://www.txtlocal.com/sendsmspost.php"
 
-    # -----------------------------------
-    # No need to edit anything below this line
-    # -----------------------------------
+        postdata = urllib.urlencode(values)
+        req = urllib2.Request(url, postdata)
 
-    values = {
-        "test": test_flag,
-        "uname": username,
-        "hash": hash,
-        "message": message,
-        "from": sender,
-        "selectednums": numbers,
-    }
+        print( f"Attempting to send SMS to {sname} at {snumber} on {tdate}")
+        f.write(
+            f"Attempting to send SMS to {sname} at {snumber} on {tdate}"
+        )
 
-    url = "http://www.txtlocal.com/sendsmspost.php"
-
-    postdata = urllib.urlencode(values)
-    req = urllib2.Request(url, postdata)
-
-    print( f"Attempting to send SMS to {sname} at {snumber} on {tdate}")
-    f.write(
-        f"Attempting to send SMS to {sname} at {snumber} on {tdate}"
-    )
-
-    try:
-        response = urllib2.urlopen(req)
-        response_url = response.geturl()
-        if response_url == url:
-            print("SMS sent!")
-    except urllib2.URLError as e:
-        print("Send failed!")
-        print(e.reason)
+        try:
+            response = urllib2.urlopen(req)
+            response_url = response.geturl()
+            if response_url == url:
+                print("SMS sent!")
+        except urllib2.URLError as e:
+            print("Send failed!")
+            print(e.reason)
