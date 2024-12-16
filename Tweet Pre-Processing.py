@@ -7,7 +7,7 @@
 import numpy as np
 from nltk.corpus import twitter_samples
 import matplotlib.pyplot as plt
-import random
+import secrets
 
 
 # In[ ]:
@@ -39,7 +39,7 @@ all_tweets = positive_tweets + negative_tweets
 
 # Analysing sampels tweets
 
-print(positive_tweets[random.randint(0, 5000)])
+print(positive_tweets[secrets.SystemRandom().randint(0, 5000)])
 
 
 # In[19]:

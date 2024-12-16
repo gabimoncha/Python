@@ -1,6 +1,6 @@
 import os
-import random
 from functools import namedtuple
+import secrets
 
 """
 Target: BlackJack 21 simulate
@@ -91,7 +91,7 @@ class Deck:
     def shuffle(self):
         for _ in range(self.num):
             for index in range(len(self.cards)):
-                i = random.randint(0, 51)
+                i = secrets.SystemRandom().randint(0, 51)
                 self.cards[index], self.cards[i] = self.cards[i], self.cards[index]
 
     def rebuilt(self):
@@ -287,7 +287,7 @@ class Dealer(User):
         if self.is_point("<", BASE_VALUE):
             self.obtain_card(deck)
         else:
-            self.trigger += random.randint(0, 5)
+            self.trigger += secrets.SystemRandom().randint(0, 5)
             if self.trigger % 5 == 0:
                 self.obtain_card(deck)
 

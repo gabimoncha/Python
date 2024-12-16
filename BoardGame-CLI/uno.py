@@ -1,6 +1,7 @@
 #      uno game      #
 
-import random
+import secrets
+
 """
 Generate the UNO deck of 108 cards.
 Parameters: None
@@ -36,7 +37,7 @@ Return values: deck=>list
 
 def shuffleDeck(deck):
     for cardPos in range(len(deck)):
-        randPos = random.randint(0, 107)
+        randPos = secrets.SystemRandom().randint(0, 107)
         deck[cardPos], deck[randPos] = deck[randPos], deck[cardPos]
     return deck
 

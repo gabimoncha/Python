@@ -3,9 +3,9 @@
 # Used better naming for variables
 # There were few inconsistencies in the outputs of the first if/else/if ladder \
 # inside the while loop. That is solved.
-import random
 import time
 from os import system
+import secrets
 
 
 class bcolors:
@@ -43,7 +43,7 @@ score = 0
 
 while run and i < 10:
 
-    comp_choice = random.choice(li)
+    comp_choice = secrets.choice(li)
     user_choice = input("Type s for snake, w for water or g for gun: ").lower()
 
     if user_choice == comp_choice:

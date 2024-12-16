@@ -5,6 +5,7 @@ if computer chooses snake and user chooses water, the snake will drink water and
 If computer chooses gun and user chooses water, the gun gets drown into water and user wins.
 And so on for other cases
 """
+import secrets
 
 # you can use this code also, see this code is very short in compare to your code
 # code starts here
@@ -59,7 +60,6 @@ else: # just checked
     print("can't calculate score")
 exit = input("PRESS ENTER TO EXIT")
 """  # code ends here
-import random
 
 # import time
 
@@ -79,7 +79,7 @@ while x < 10:
     for key, value in choices.items():
         print(f"Choose {key} for {value}")
 
-    comp_rand = random.choice(list(choices.keys())).lower()
+    comp_rand = secrets.choice(list(choices.keys())).lower()
     user_choice = input("\n----->").lower()
     print("Mr. Computer's choice is : " + comp_rand)
 

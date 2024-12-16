@@ -1,10 +1,10 @@
 # PasswordGenerator GGearing 314 01/10/19
 # modified Prince Gangurde 4/4/2020
 
-from random import randint
+import secrets
 
-case = randint(1, 2)
-number = randint(1, 99)
+case = secrets.SystemRandom().randint(1, 2)
+number = secrets.SystemRandom().randint(1, 99)
 
 specialCharacters = (
     "!",
@@ -97,10 +97,10 @@ colour = (
 )
 
 chosenanimal = animals[
-    randint(0, len(animals) - 1)
+    secrets.SystemRandom().randint(0, len(animals) - 1)
 ]  # randint will return max lenght but , tuple has index from 0 to len-1
-chosencolour = colour[randint(0, len(colour) - 1)]
-chosenSpecialCharacter = specialCharacters[randint(0, len(specialCharacters) - 1)]
+chosencolour = colour[secrets.SystemRandom().randint(0, len(colour) - 1)]
+chosenSpecialCharacter = specialCharacters[secrets.SystemRandom().randint(0, len(specialCharacters) - 1)]
 
 if case == 1:
     chosenanimal = chosenanimal.upper()

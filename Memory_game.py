@@ -1,6 +1,6 @@
-import random
 
 import simplegui
+import secrets
 
 
 def new_game():
@@ -8,7 +8,7 @@ def new_game():
 
     def create(card):
         while len(card) != 8:
-            num = random.randrange(0, 8)
+            num = secrets.SystemRandom().randrange(0, 8)
             if num not in card:
                 card.append(num)
         return card
@@ -20,7 +20,7 @@ def new_game():
     card1 = create(card1)
     card2 = create(card2)
     card1.extend(card2)
-    random.shuffle(card1)
+    secrets.SystemRandom().shuffle(card1)
     state = 0
     exposed = []
     for i in range(0, 16, 1):

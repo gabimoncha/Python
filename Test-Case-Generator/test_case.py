@@ -5,9 +5,9 @@
 #  _________________________________________________ ###
 
 from tkinter import *
-from random import randint, choices
 import webbrowser
 import os
+import secrets
 
 mycolor = "#262626"
 
@@ -609,12 +609,12 @@ class Type1(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
             self.output.insert(END, self.n)
             self.output.insert(END, "\n")
             self.a = [0] * self.n
             for j in range(self.n):
-                self.a[j] = randint(self.a_min, self.a_max)
+                self.a[j] = secrets.SystemRandom().randint(self.a_min, self.a_max)
             self.output.insert(END, self.a)
             self.output.insert(END, "\n")
 
@@ -641,15 +641,15 @@ class Type2(Case):  # Type 2
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
-            self.m = randint(self.m_min, self.m_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+            self.m = secrets.SystemRandom().randint(self.m_min, self.m_max)
             self.output.insert(END, self.n)
             self.output.insert(END, " ")
             self.output.insert(END, self.m)
             self.output.insert(END, "\n")
             self.a = [0] * self.n
             for j in range(self.n):
-                self.a[j] = randint(self.a_min, self.a_max)
+                self.a[j] = secrets.SystemRandom().randint(self.a_min, self.a_max)
             self.output.insert(END, self.a)
             self.output.insert(END, "\n")
 
@@ -675,8 +675,8 @@ class Type3(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.a = randint(self.a_min, self.a_max)
-            self.b = randint(self.b_min, self.b_max)
+            self.a = secrets.SystemRandom().randint(self.a_min, self.a_max)
+            self.b = secrets.SystemRandom().randint(self.b_min, self.b_max)
             self.output.insert(END, self.a)
             self.output.insert(END, " ")
             self.output.insert(END, self.b)
@@ -706,8 +706,8 @@ class Type4(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
-            self.m = randint(self.m_min, self.m_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+            self.m = secrets.SystemRandom().randint(self.m_min, self.m_max)
             self.output.insert(END, self.n)
             self.output.insert(END, " ")
             self.output.insert(END, self.m)
@@ -715,11 +715,11 @@ class Type4(Case):
             self.a = [0] * self.n
             self.b = [0] * self.m
             for j in range(self.n):
-                self.a[j] = randint(self.a_min, self.a_max)
+                self.a[j] = secrets.SystemRandom().randint(self.a_min, self.a_max)
             self.output.insert(END, self.a)
             self.output.insert(END, "\n")
             for j in range(self.m):
-                self.b[j] = randint(self.b_min, self.b_max)
+                self.b[j] = secrets.SystemRandom().randint(self.b_min, self.b_max)
             self.output.insert(END, self.b)
             self.output.insert(END, "\n")
 
@@ -753,9 +753,9 @@ class Type5(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
-            self.m = randint(self.m_min, self.m_max)
-            self.k = randint(self.k_min, self.k_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+            self.m = secrets.SystemRandom().randint(self.m_min, self.m_max)
+            self.k = secrets.SystemRandom().randint(self.k_min, self.k_max)
             self.output.insert(END, self.n)
             self.output.insert(END, " ")
             self.output.insert(END, self.m)
@@ -791,8 +791,8 @@ class Type6(Case):
 
     def generate(self):  # Type 6
         self.output.delete("1.0", END)
-        self.n = randint(self.n_min, self.n_max)
-        self.m = randint(self.m_min, self.m_max)
+        self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+        self.m = secrets.SystemRandom().randint(self.m_min, self.m_max)
         self.output.insert(END, self.n)
         self.output.insert(END, " ")
         self.output.insert(END, self.m)
@@ -800,7 +800,7 @@ class Type6(Case):
         for i in range(self.n):
             self.a = [0] * self.m
             for j in range(self.m):
-                self.a[j] = randint(self.a_min, self.a_max)
+                self.a[j] = secrets.SystemRandom().randint(self.a_min, self.a_max)
             self.output.insert(END, self.a)
             self.output.insert(END, "\n")
 
@@ -826,10 +826,10 @@ class Type7(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
             self.output.insert(END, self.n)
             self.output.insert(END, "\n")
-            self.a = choices(self.char_lis, k=self.n)
+            self.a = secrets.SystemRandom().choices(self.char_lis, k=self.n)
             self.output.insert(END, "".join(self.a))
             self.output.insert(END, "\n")
 
@@ -857,15 +857,15 @@ class Type8(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
-            self.m = randint(self.m_min, self.m_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+            self.m = secrets.SystemRandom().randint(self.m_min, self.m_max)
             self.output.insert(END, self.n)
             self.output.insert(END, " ")
             self.output.insert(END, self.m)
             self.output.insert(END, "\n")
             for j in range(self.m):
-                self.a = randint(self.a_min, self.a_max)
-                self.b = randint(self.b_min, self.b_max)
+                self.a = secrets.SystemRandom().randint(self.a_min, self.a_max)
+                self.b = secrets.SystemRandom().randint(self.b_min, self.b_max)
                 self.output.insert(END, self.a)
                 self.output.insert(END, " ")
                 self.output.insert(END, self.b)
@@ -893,8 +893,8 @@ class Type9(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
-            self.a = choices(self.char_lis, k=self.n)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+            self.a = secrets.SystemRandom().choices(self.char_lis, k=self.n)
             self.output.insert(END, "".join(self.a))
             self.output.insert(END, "\n")
 
@@ -922,9 +922,9 @@ class Type10(Case):
         self.output.insert(END, self.t)
         self.output.insert(END, "\n")
         for i in range(self.t):
-            self.n = randint(self.n_min, self.n_max)
-            self.k = randint(self.k_min, self.k_max)
-            self.m = randint(self.m_min, self.m_max)
+            self.n = secrets.SystemRandom().randint(self.n_min, self.n_max)
+            self.k = secrets.SystemRandom().randint(self.k_min, self.k_max)
+            self.m = secrets.SystemRandom().randint(self.m_min, self.m_max)
             self.output.insert(END, self.n)
             self.output.insert(END, " ")
             self.output.insert(END, self.k)
@@ -933,7 +933,7 @@ class Type10(Case):
             self.output.insert(END, "\n")
             self.a = [0] * self.n
             for j in range(self.n):
-                self.a[j] = randint(self.a_min, self.a_max)
+                self.a[j] = secrets.SystemRandom().randint(self.a_min, self.a_max)
             self.output.insert(END, self.a)
             self.output.insert(END, "\n")
 

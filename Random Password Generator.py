@@ -1,4 +1,4 @@
-import random
+import secrets
 
 low="abcdefghijklmnopqrstuvwxyz"
 upp="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -7,6 +7,6 @@ sym="!@#$%^&*"
 
 all=low+upp+num+sym
 length=8
-password="".join(random.sample(all,length))
+password="".join(secrets.SystemRandom().sample(all,length))
 print(password)
 

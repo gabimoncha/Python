@@ -10,10 +10,10 @@ Created on Fri Mar 23 14:17:24 2019
 import math
 import os
 from collections import deque
-from random import randint
 
 import pygame
 from pygame.locals import *
+import secrets
 
 FPS = 60
 ANI_SPEED = 0.18  # pixels per millisecond
@@ -95,7 +95,7 @@ class PipePair(pygame.sprite.Sprite):
             )
             / PipePair.PIECE_HEIGHT  # 2 end pieces + 1 body piece  # to get number of pipe pieces
         )
-        self.bottom_pieces = randint(1, total_pipe_body_pieces)
+        self.bottom_pieces = secrets.SystemRandom().randint(1, total_pipe_body_pieces)
         self.top_pieces = total_pipe_body_pieces - self.bottom_pieces
 
         # bottom pipe

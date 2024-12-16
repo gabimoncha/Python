@@ -1,5 +1,5 @@
-import random
 import time
+import secrets
 
 SUITS = ("C", "S", "H", "D")
 RANKS = ("A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K")
@@ -45,10 +45,10 @@ class deck:
         self.deck = [card(suit, rank) for suit in SUITS for rank in RANKS]
 
     def shuffle(self):
-        random.shuffle(self.deck)
+        secrets.SystemRandom().shuffle(self.deck)
 
     def dealCard(self):
-        return random.choice(self.deck)
+        return secrets.choice(self.deck)
 
     def __str__(self):
         print(self.deck)
@@ -69,7 +69,7 @@ deck2.shuffle()
 # combine both the shuffled decks
 combinedDeck = deck1.deck + deck2.deck
 # ReShuffle the combined deck, cut it and distribute to two players.
-random.shuffle(combinedDeck)
+secrets.SystemRandom().shuffle(combinedDeck)
 print("....decks have been combined and shuffled...\n")
 print("------------------------------------------\n")
 input("Enter a key to cut the deck..\n")

@@ -2,13 +2,13 @@
 # Random Dice Game using Tkinter
 # Tkinter is used for Making Using GUI in Python Program!
 # randint provides you with a random number within your given range!
-from random import randint
 from tkinter import *
+import secrets
 
 # Function to rool the dice
 def roll():
     text.delete(0.0, END)
-    text.insert(END, str(randint(1, 100)))
+    text.insert(END, str(secrets.SystemRandom().randint(1, 100)))
 
 
 # Defining our GUI

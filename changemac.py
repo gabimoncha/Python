@@ -3,8 +3,8 @@
 # Simple python Script to change mac address of linux generate random or enter mac address
 
 
-import random
 from subprocess import PIPE, Popen
+import secrets
 
 
 # function for returning terminal command
@@ -19,9 +19,9 @@ def randmac():
         0x00,
         0x16,
         0x3E,
-        random.randint(0x00, 0x7F),
-        random.randint(0x00, 0xFF),
-        random.randint(0x00, 0xFF),
+        secrets.SystemRandom().randint(0x00, 0x7F),
+        secrets.SystemRandom().randint(0x00, 0xFF),
+        secrets.SystemRandom().randint(0x00, 0xFF),
     ]
 
 

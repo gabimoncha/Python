@@ -1,5 +1,5 @@
-import random
 from sys import argv
+import secrets
 
 stake = int(argv[1])
 goals = int(argv[2])
@@ -12,7 +12,7 @@ for i in range(trials):
     cash = stake
     while cash > 0 and cash < goals:
         bets += 1
-        if random.randrange(0, 2) == 0:
+        if secrets.SystemRandom().randrange(0, 2) == 0:
             cash += 1
         else:
             cash -= 1

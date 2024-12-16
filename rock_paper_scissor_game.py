@@ -1,6 +1,5 @@
 from __future__ import print_function
-
-import random
+import secrets
 
 
 # let
@@ -33,7 +32,7 @@ def game(player_choice):
     name = player_choice
     print(name)
     number = name_to_number(name)
-    comp_number = random.randrange(0, 2)
+    comp_number = secrets.SystemRandom().randrange(0, 2)
     comp_choice = number_to_name(comp_number)
     print(comp_choice)
 

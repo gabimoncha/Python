@@ -1,11 +1,11 @@
 import platform
-import random
 import string
 import threading
 import time
 from os import system
 
 import requests
+import secrets
 
 if platform.system() == "Windows":  # checking OS
     title = "windows"
@@ -14,11 +14,11 @@ else:
 
 
 def randomName(size=10, chars=string.ascii_letters + string.digits):
-    return "".join(random.choice(chars) for i in range(size))
+    return "".join(secrets.choice(chars) for i in range(size))
 
 
 def randomPassword(size=14, chars=string.ascii_letters + string.digits):
-    return "".join(random.choice(chars) for i in range(size))
+    return "".join(secrets.choice(chars) for i in range(size))
 
 
 global maxi
@@ -42,7 +42,7 @@ class proxy:
             time.sleep(600)
 
     def get_proxy(self):
-        random1 = random.choice(self.splited)  # choose a random proxie
+        random1 = secrets.choice(self.splited)  # choose a random proxie
         return random1
 
     def FormatProxy(self):

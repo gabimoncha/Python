@@ -5,7 +5,7 @@
 
 # Dice Rolling Simulator
 
-import random
+import secrets
 
 try:
     input = raw_input
@@ -60,21 +60,21 @@ def result():
 # Below are our dice functions.
 def dice6():
     # Getting a random number between 1 and 6 and printing it.
-    dice_6 = random.randint(1, 6)
+    dice_6 = secrets.SystemRandom().randint(1, 6)
     print("\r\nYou rolled a " + str(dice_6) + "!\r\n")
 
     user_exit_checker()
 
 
 def dice8():
-    dice_8 = random.randint(1, 8)
+    dice_8 = secrets.SystemRandom().randint(1, 8)
     print("\r\nYou rolled a " + str(dice_8) + "!")
 
     user_exit_checker()
 
 
 def dice12():
-    dice_12 = random.randint(1, 12)
+    dice_12 = secrets.SystemRandom().randint(1, 12)
     print("\r\nYou rolled a " + str(dice_12) + "!")
 
     user_exit_checker()

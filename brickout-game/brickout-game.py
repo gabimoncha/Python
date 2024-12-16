@@ -15,10 +15,9 @@ That includes the classes Ball, Paddle, Brick, and BrickWall.
 
 """
 
-import random
-
 # using pygame python GUI
 import pygame
+import secrets
 
 # Define Four Colours
 BLACK = (0, 0, 0)
@@ -286,7 +285,7 @@ class BrickWall(pygame.sprite.Group):
 
 
 # The game objects ball, paddle and brick wall
-ball = Ball(screen, 25, random.randint(1, 700), 250)
+ball = Ball(screen, 25, secrets.SystemRandom().randint(1, 700), 250)
 paddle = Paddle(screen, 100, 20, 250, 450)
 brickWall = BrickWall(screen, 25, 25, 150, 50)
 

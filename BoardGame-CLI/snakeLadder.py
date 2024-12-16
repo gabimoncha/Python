@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # Taking players data
 players = {}  # stores players name their locations
@@ -33,7 +33,7 @@ def player_input():
 # Dice roll method
 def roll():
     # print(players)
-    return random.randrange(1, 7)
+    return secrets.SystemRandom().randrange(1, 7)
 
 
 # play method

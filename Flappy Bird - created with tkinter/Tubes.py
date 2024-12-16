@@ -1,10 +1,10 @@
-from random import randint
 from threading import Thread
 
 from Background import Background
 from Bird import Bird
 from PIL.Image import open as openImage
 from PIL.ImageTk import PhotoImage
+import secrets
 
 
 class Tubes(Thread):
@@ -108,8 +108,7 @@ class Tubes(Thread):
         # Define uma posição Y para o tubo aleatóriamente respeitando algumas regras que são:
         # Espaço para o pássaro passar e espaço para adicionar o tubo de baixo.
 
-        height = randint(
-            self.__imageHeight // 2,
+        height = secrets.SystemRandom().randint(self.__imageHeight // 2,
             self.__height - (self.__bird_h * 2) - self.__imageHeight,
         )
 

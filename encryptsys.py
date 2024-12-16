@@ -1,5 +1,5 @@
 import string
-from random import randint
+import secrets
 
 
 def decrypt():
@@ -41,7 +41,7 @@ def encrypt():
     texto = input("Input the text to encrypt : ")
     abecedario = string.printable + "áéíóúÁÉÍÚÓàèìòùÀÈÌÒÙäëïöüÄËÏÖÜñÑ´"
     abecedario2 = []
-    nummoves = randint(1, len(abecedario))
+    nummoves = secrets.SystemRandom().randint(1, len(abecedario))
     indexs = []
 
     texttoenc = []

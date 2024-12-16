@@ -1,8 +1,8 @@
 '''' Multiple extension changer'''
 import time
 from pathlib import Path as p
-import random as rand
 import hashlib
+import secrets
 
 
 def chxten_(files, xten):
@@ -83,7 +83,7 @@ if files == 'r':
                     if not i.endswith('.log'):
                         filer.append(i)
     for i in range(5):
-        pos = rand.randint(0,len(filer))
+        pos = secrets.SystemRandom().randint(0,len(filer))
         files = files + filer[pos] + ','
 
     print(files)

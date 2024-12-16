@@ -1,8 +1,8 @@
-import random
+import secrets
 
 def number_guessing_game():
    
-    secret_number = random.randint(1, 100)
+    secret_number = secrets.SystemRandom().randint(1, 100)
     attempts = 0
 
     print("Welcome to the Number Guessing Game!")

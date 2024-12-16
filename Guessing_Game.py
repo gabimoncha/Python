@@ -1,10 +1,10 @@
-from random import randint
 from time import sleep
+import secrets
 
 
 def guessing_game(GUESS_RANGE, GUESS_LIMIT):
     # Set the initial values.
-    RANDOM = randint(1, GUESS_RANGE)
+    RANDOM = secrets.SystemRandom().randint(1, GUESS_RANGE)
     GUESS = int(input("What is your guess? "))
     ATTEMPTS_ALLOWED = GUESS_LIMIT
     done = False

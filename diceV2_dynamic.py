@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 # Class that that holds dice-functions. You can set the amount of sides and roll with each dice object.
@@ -16,7 +16,7 @@ class Dice:
             )
 
     def roll(self):
-        return random.randint(1, self.sides)
+        return secrets.SystemRandom().randint(1, self.sides)
 
 
 # =====================================================================
