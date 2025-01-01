@@ -3,7 +3,8 @@
 # using openweathermap api 
 
 # import required modules 
-import requests, json 
+import json 
+from security import safe_requests
 
 # Enter your API key here 
 api_key = "Your_API_Key"
@@ -20,7 +21,7 @@ complete_url = base_url + "appid=" + api_key + "&q=" + city_name
 
 # get method of requests module 
 # return response object 
-response = requests.get(complete_url) 
+response = safe_requests.get(complete_url) 
 
 # json method of response object 
 # convert json format data into 

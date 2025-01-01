@@ -4,16 +4,16 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import *
-import requests
 from bs4 import BeautifulSoup
 from requests.models import ContentDecodingError
+from security import safe_requests
 
 
 def getVal(cont1, cont2):
     cont1val = cont1.split("-")[1]
     cont2val = cont2.split("-")[1]
     url = f"https://free.currconv.com/api/v7/convert?q={cont1val}_{cont2val}&compact=ultra&apiKey=b43a653672c4a94c4c26"
-    r = requests.get(url)
+    r = safe_requests.get(url)
     htmlContent = r.content
     soup = BeautifulSoup(htmlContent, "html.parser")
     try:

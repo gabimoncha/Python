@@ -7,6 +7,7 @@ import urllib.request
 import os
 from bs4 import BeautifulSoup
 import sys
+from security import safe_requests
 
 if sys.version_info[0] != 3:
     print(
@@ -30,7 +31,7 @@ def create_form():
     form = dict()
     cookie = {"fr": "0ZvhC3YwYm63ZZat1..Ba0Ipu.Io.AAA.0.0.Ba0Ipu.AWUPqDLy"}
 
-    data = requests.get(post_url, headers=headers)
+    data = safe_requests.get(post_url, headers=headers)
     for i in data.cookies:
         cookie[i.name] = i.value
     data = BeautifulSoup(data.text, "html.parser").form

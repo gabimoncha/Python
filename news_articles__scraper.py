@@ -17,11 +17,11 @@ import sys
 import urllib
 
 import pandas as pd
-import requests
 
 # importing necessary libraries
 from bs4 import BeautifulSoup
 from newspaper import Article
+from security import safe_requests
 
 # Extracting links for all the pages (1 to 158) of boomlive fake news section
 fakearticle_links = []
@@ -29,10 +29,10 @@ for i in range(1, 159):
     url = "https://www.boomlive.in/fake-news/" + str(i)
     try:
         # this might throw an exception if something goes wrong.
-        page = requests.get(url)
+        page = safe_requests.get(url)
 
         # send requests
-        page = requests.get(url)
+        page = safe_requests.get(url)
         soup = BeautifulSoup(page.text, "html.parser")
 
         # Collecting all the links in a list
@@ -159,7 +159,7 @@ for i in range(2, 126):
 
     try:
         # send requests
-        page = requests.get(url)
+        page = safe_requests.get(url)
         soup = BeautifulSoup(page.text, "html.parser")
 
         # Collecting all the links in a list

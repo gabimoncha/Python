@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import re
+from security import safe_requests
 
 re_text = r"\:|\.|\!|(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b|(.twitter.com\/)\w*|\&"
 re_text_1 = r"(pictwittercom)\/\w*"
@@ -13,7 +13,7 @@ def tweeter_scrapper():
 
     tweeter_id = input()
 
-    response = requests.get(base_tweeter_url.format(tweeter_id))
+    response = safe_requests.get(base_tweeter_url.format(tweeter_id))
     soup = BeautifulSoup(response.content, "lxml")
     all_tweets = soup.find_all("div", {"class": "tweet"})
 
