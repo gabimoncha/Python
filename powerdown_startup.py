@@ -11,6 +11,7 @@
 import os  # Load the Library Module
 import subprocess  # Load the Library Module
 from time import strftime  # Load just the strftime Module from Time
+from security import safe_command
 
 
 def windows():  # This is the function to run if it detects the OS is windows.
@@ -18,8 +19,7 @@ def windows():  # This is the function to run if it detects the OS is windows.
     for server in open(
         "startup_list.txt", "r"
     ):  # Read the list of servers from the list
-        ret = subprocess.call(
-            "ping -n 3 %s" % server,
+        ret = safe_command.run(subprocess.call, "ping -n 3 %s" % server,
             shell=True,
             stdout=open("NUL", "w"),
             stderr=subprocess.STDOUT,
@@ -28,7 +28,7 @@ def windows():  # This is the function to run if it detects the OS is windows.
             f.write(
                 "%s: is alive, loading PuTTY session" % server.strip() + "\n"
             )  # Write out to the logfile
-            subprocess.Popen(("putty -load " + server))  # Load the putty session
+            safe_command.run(subprocess.Popen, ("putty -load " + server))  # Load the putty session
         else:
             f.write(
                 "%s : did not respond" % server.strip() + "\n"
@@ -38,8 +38,7 @@ def windows():  # This is the function to run if it detects the OS is windows.
 def linux():
     f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
     for server in open("startup_list.txt"):  # Read the list of servers from the list
-        ret = subprocess.call(
-            "ping -c 3 %s" % server,
+        ret = safe_command.run(subprocess.call, "ping -c 3 %s" % server,
             shell=True,
             stdout=open("/dev/null", "w"),
             stderr=subprocess.STDOUT,
