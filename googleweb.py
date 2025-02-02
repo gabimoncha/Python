@@ -32,7 +32,7 @@ def SearchResults():
             if (k[0] != "#") and k[0] != "/":
                 checker = k[8:16]
                 if (checker != "webcache"):
-                    rr = requests.get(k, headers=header, verify=False)
+                    rr = requests.get(k, headers=header, verify=True)
                     soupInside = bs4.BeautifulSoup(rr.text, features="html.parser")
                     elementInside=soupInside.select("body")
                     for line in elementInside:
