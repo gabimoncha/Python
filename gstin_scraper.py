@@ -37,7 +37,7 @@ def fetch_gstins(company_name, csrf_token):
     payload = {'gstnum': company_name, 'csrfmiddlewaretoken': csrf_token}
 
     # Getting the HTML content and extracting the GSTIN content using BeautifulSoup.
-    html_content = requests.post(third_party_gstin_site, data=payload)
+    html_content = requests.post(third_party_gstin_site, data=payload, timeout=60)
     soup = BeautifulSoup(html_content.text, 'html.parser')
     site_results = soup.find_all(id="searchresult")
 
@@ -54,7 +54,7 @@ def main():
     third_party_gstin_site = "https://www.knowyourgst.com/gst-number-search/by-name-pan/"
 
     # Getting the CSRF value for further RESTful calls.
-    page_with_csrf = requests.get(third_party_gstin_site)
+    page_with_csrf = requests.get(third_party_gstin_site, timeout=60)
     soup = BeautifulSoup(page_with_csrf.text, 'html.parser')
     csrf_token = soup.find('input', {"name": "csrfmiddlewaretoken"})['value']
 

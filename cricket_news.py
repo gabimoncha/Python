@@ -14,7 +14,7 @@ def speak(audio):
 
 url = "https://www.cricbuzz.com/cricket-news/latest-news"
 
-ans = requests.get(url)
+ans = requests.get(url, timeout=60)
 
 soup = BeautifulSoup(ans.content, "html.parser")
 

@@ -13,7 +13,7 @@ def tweeter_scrapper():
 
     tweeter_id = input()
 
-    response = requests.get(base_tweeter_url.format(tweeter_id))
+    response = requests.get(base_tweeter_url.format(tweeter_id), timeout=60)
     soup = BeautifulSoup(response.content, "lxml")
     all_tweets = soup.find_all("div", {"class": "tweet"})
 

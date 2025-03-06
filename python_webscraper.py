@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 # Make a request on to your website
-page = requests.get("Paste your Website Domain here")
+page = requests.get("Paste your Website Domain here", timeout=60)
 soup = BeautifulSoup(page.content, 'html.parser')
 
 # Create all_h1_tags as empty list

@@ -20,7 +20,7 @@ complete_url = base_url + "appid=" + api_key + "&q=" + city_name
 
 # get method of requests module 
 # return response object 
-response = requests.get(complete_url) 
+response = requests.get(complete_url, timeout=60) 
 
 # json method of response object 
 # convert json format data into 

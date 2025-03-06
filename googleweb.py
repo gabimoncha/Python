@@ -22,7 +22,7 @@ def SearchResults():
         searchString=i.replace("+","%2B")
         searchString=searchString.replace(" ","+")
         searchString=StabUrl+searchString+midUrl+searchString+EndUrl
-        r = requests.get(searchString, headers=header)
+        r = requests.get(searchString, headers=header, timeout=60)
         soup = bs4.BeautifulSoup(r.text, features="html.parser")
         elements = soup.select(".r a")
         for g in elements:
@@ -32,7 +32,7 @@ def SearchResults():
             if (k[0] != "#") and k[0] != "/":
                 checker = k[8:16]
                 if (checker != "webcache"):
-                    rr = requests.get(k, headers=header, verify=False)
+                    rr = requests.get(k, headers=header, verify=False, timeout=60)
                     soupInside = bs4.BeautifulSoup(rr.text, features="html.parser")
                     elementInside=soupInside.select("body")
                     for line in elementInside:

@@ -20,7 +20,7 @@ def download_files(links, idx):
 
 def main():
     for i in range(1, 5):
-        r = req.get(BASE_URL + str(i) + "/1080/")
+        r = req.get(BASE_URL + str(i) + "/1080/", timeout=60)
         soup = bs(r.text, "html.parser")
         link_ = []
         for link in soup.find_all("a"):

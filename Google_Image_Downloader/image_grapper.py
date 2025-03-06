@@ -62,7 +62,7 @@ def search_for_image():
         images.append(link)
     counter = 0
     for re in images:
-        rs = requests.get(re)
+        rs = requests.get(re, timeout=60)
         with open("img" + str(counter) + ".jpg", "wb") as file:
             file.write(rs.content)
 
@@ -100,7 +100,7 @@ def download_wallpapers_1080p():
     # Goes to Each link and downloads high resolution images
 
     for re in temp:
-        rs = requests.get(re)
+        rs = requests.get(re, timeout=60)
         with open("img" + str(count) + ".jpg", "wb") as file:
             file.write(rs.content)
 

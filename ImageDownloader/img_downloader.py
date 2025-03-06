@@ -4,7 +4,7 @@
 def ImageDownloader(url):
     import os, re, requests
 
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     text = response.text
 
     p = r'<img.*?src="(.*?)"[^\>]+>'

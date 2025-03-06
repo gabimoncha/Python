@@ -20,7 +20,7 @@ def Times_of_India(userInput, ua):
     url = "https://timesofindia.indiatimes.com/india/"
     url += userInput
 
-    res = requests.post(url, headers=ua)
+    res = requests.post(url, headers=ua, timeout=60)
     soup = BeautifulSoup(res.content, "html.parser")
     data = soup.find_all(class_="w_tle")
 
@@ -51,7 +51,7 @@ def india_today(userInput, ua):
     url = "https://www.indiatoday.in/topic/"
     url += userInput
 
-    res = requests.get(url, headers=ua)
+    res = requests.get(url, headers=ua, timeout=60)
     soup = BeautifulSoup(res.content, "html.parser")
     data = soup.find_all(class_="field-content")
 

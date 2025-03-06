@@ -37,7 +37,7 @@ class proxy:
                 "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&ssl=yes"
             ]
             for url in urls:
-                data += requests.get(url).text
+                data += requests.get(url, timeout=60).text
                 self.splited += data.split("\r\n")  # scraping and splitting proxies
             time.sleep(600)
 
