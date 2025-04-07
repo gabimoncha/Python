@@ -6,6 +6,7 @@ import time
 from os import system
 
 import requests
+from security import safe_requests
 
 if platform.system() == "Windows":  # checking OS
     title = "windows"
@@ -37,7 +38,7 @@ class proxy:
                 "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&ssl=yes"
             ]
             for url in urls:
-                data += requests.get(url).text
+                data += safe_requests.get(url).text
                 self.splited += data.split("\r\n")  # scraping and splitting proxies
             time.sleep(600)
 

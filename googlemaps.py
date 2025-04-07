@@ -1,6 +1,6 @@
-import requests
 import json
 import geocoder
+from security import safe_requests
 
 g = geocoder.ip("me")
 
@@ -18,7 +18,7 @@ url = (
     + "radius=1000"
 )
 
-r = requests.get(url + "query=" + query + "&key=" + key)
+r = safe_requests.get(url + "query=" + query + "&key=" + key)
 
 x = r.json()
 y = x["results"]

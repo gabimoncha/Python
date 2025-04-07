@@ -7,6 +7,7 @@ from typing import Callable, List
 
 import requests
 from colorama import Fore, Style
+from security import safe_requests
 
 DEBUG = False
 success_code = 200
@@ -70,7 +71,7 @@ def parse_word_from_site(url: str = 'https://random-word-api.herokuapp.com/word'
     :raises RuntimeError: something go wrong with getting the word from site.
     """
     try:
-        response: requests.Response = requests.get(url, timeout=request_timeout)
+        response: requests.Response = safe_requests.get(url, timeout=request_timeout)
     except ConnectionError:
         raise ConnectionError('There is no connection to the internet')
     if response.status_code == success_code:

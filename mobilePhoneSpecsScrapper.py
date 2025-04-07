@@ -1,4 +1,3 @@
-import requests
 from bs4 import BeautifulSoup
 
 # import csv
@@ -6,6 +5,7 @@ import os
 
 # import time
 import json
+from security import safe_requests
 
 
 class Phonearena:
@@ -26,7 +26,7 @@ class Phonearena:
 
         # Handing the connection error of the url.
         try:
-            page = requests.get(url)
+            page = safe_requests.get(url)
             # It parses the html data from requested url.
             soup = BeautifulSoup(page.text, "html.parser")
             return soup

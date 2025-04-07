@@ -11,6 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import webbrowser
 import time
+from security import safe_requests
 
 
 def Times_of_India(userInput, ua):
@@ -51,7 +52,7 @@ def india_today(userInput, ua):
     url = "https://www.indiatoday.in/topic/"
     url += userInput
 
-    res = requests.get(url, headers=ua)
+    res = safe_requests.get(url, headers=ua)
     soup = BeautifulSoup(res.content, "html.parser")
     data = soup.find_all(class_="field-content")
 

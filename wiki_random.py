@@ -14,8 +14,8 @@ Usage:
 
 enter index of article you would like to see, or 'r' for retry and 'n' for exit.
 """
-import requests
 import webbrowser
+from security import safe_requests
 
 page_count = 10
 url = (
@@ -26,7 +26,7 @@ url = (
 
 
 def load():
-    response = requests.get(url)
+    response = safe_requests.get(url)
     if response.ok:
         jsonData = response.json()["query"]["random"]
         print("10 Random generted WIKI pages...")

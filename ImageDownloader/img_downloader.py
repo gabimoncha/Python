@@ -1,10 +1,12 @@
 # ImageDownloader - Muhammed Shokr its amazing
 
 
-def ImageDownloader(url):
-    import os, re, requests
+from security import safe_requests
 
-    response = requests.get(url)
+def ImageDownloader(url):
+    import os, re
+
+    response = safe_requests.get(url)
     text = response.text
 
     p = r'<img.*?src="(.*?)"[^\>]+>'

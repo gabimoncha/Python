@@ -1,15 +1,15 @@
 from settings import key
-import requests
 import os
+from security import safe_requests
 
 date = input("Enter date(YYYY-MM-DD): ")
-r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={key}&date={date}")
+r = safe_requests.get(f"https://api.nasa.gov/planetary/apod?api_key={key}&date={date}")
 parsed = r.json()
 title = parsed["title"]
 url = parsed["hdurl"]
 print(f"{title}: {url}")
 
-img_ = requests.get(url, stream=True)
+img_ = safe_requests.get(url, stream=True)
 print(img_.headers)
 print(img_.headers["content-type"], img_.headers["content-length"])
 content_type = img_.headers["content-type"]
