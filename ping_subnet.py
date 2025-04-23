@@ -3,6 +3,7 @@ from __future__ import print_function
 import os  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
+from security import safe_command
 
 # Script Name		: ping_subnet.py
 # Author				: Craig Richards
@@ -44,8 +45,7 @@ else:
 
     f = open("ping_" + subnet + ".log", "w")  # Open a logfile
     for ip in range(2, 255):  # Set the ip variable for the range of numbers
-        ret = subprocess.call(
-            myping + str(subnet) + "." + str(ip),
+        ret = safe_command.run(subprocess.call, myping + str(subnet) + "." + str(ip),
             shell=True,
             stdout=f,
             stderr=subprocess.STDOUT,

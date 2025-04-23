@@ -5,11 +5,12 @@
 
 import random
 from subprocess import PIPE, Popen
+from security import safe_command
 
 
 # function for returning terminal command
 def cret(command):
-    process = Popen(args=command, stdout=PIPE, shell=True)
+    process = safe_command.run(Popen, args=command, stdout=PIPE, shell=True)
     return process.communicate()[0]
 
 

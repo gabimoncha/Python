@@ -5,6 +5,7 @@ import sqlite3  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
 from time import strftime  # Load just the strftime Module from Time
+from security import safe_command
 
 # Script Name		: powerup_checks.py
 # Author				: Craig Richards
@@ -44,8 +45,7 @@ def windows():  # This is the function to run if it detects the OS is windows.
     f = open(outputfile, "a")  # Open the logfile
     for server in open(serverfile, "r"):  # Read the list of servers from the list
         # ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
-        ret = subprocess.call(
-            "ping -n 3 %s" % server.strip(),
+        ret = safe_command.run(subprocess.call, "ping -n 3 %s" % server.strip(),
             stdout=open("NUL", "w"),
             stderr=subprocess.STDOUT,
         )  # Ping the servers in turn
@@ -62,8 +62,7 @@ def windows():  # This is the function to run if it detects the OS is windows.
 def linux():  # This is the function to run if it detects the OS is nix.
     f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
     for server in open(serverfile, "r"):  # Read the list of servers from the list
-        ret = subprocess.call(
-            "ping -c 3 %s" % server,
+        ret = safe_command.run(subprocess.call, "ping -c 3 %s" % server,
             shell=True,
             stdout=open("/dev/null", "w"),
             stderr=subprocess.STDOUT,
