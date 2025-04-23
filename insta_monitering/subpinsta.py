@@ -2,6 +2,7 @@
 import os
 import subprocess
 import sys
+from security import safe_command
 
 
 def instasubprocess(user, tags, type, productId):
@@ -19,7 +20,7 @@ def instasubprocess(user, tags, type, productId):
             + productId
         )
         command = child_env + " " + file_pocessing
-        result = subprocess.Popen(command, shell=True)
+        result = safe_command.run(subprocess.Popen, command, shell=True)
         result.wait()
     except:
         print("error::instasubprocess>>", sys.exc_info()[1])

@@ -3,6 +3,7 @@ from __future__ import print_function
 import os  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
+from security import safe_command
 
 # Script Name		: ping_servers.py
 # Author				: Craig Richards
@@ -75,8 +76,7 @@ conffilename = os.path.join(
 
 f = open(logfilename, "w")  # Open a logfile to write out the output
 for server in open(conffilename):  # Open the config file and read each line - 1.2
-    ret = subprocess.call(
-        myping + server, shell=True, stdout=f, stderr=subprocess.STDOUT
+    ret = safe_command.run(subprocess.call, myping + server, shell=True, stdout=f, stderr=subprocess.STDOUT
     )  # Run the ping command for each server in the list.
     if ret == 0:  # Depending on the response
         f.write(
